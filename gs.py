@@ -1,11 +1,11 @@
 ### BIBLIOTECAS ###
 
-import pandas as pd
-from datetime import datetime
+import pandas as pd # Biblioteca usada para criar e exibir tabelas
+from datetime import datetime # Biblioteca para tratar datas
 
 ### FUNÇÕES ###
 
-# Função para inputs com opções pré-cadastradas
+# Função para inputs com validação de opções pré-definidas
 def inputOpcoes(msg, opcoes):
     opcoes_str = ' | '.join(opcoes)
     while True:
@@ -14,7 +14,7 @@ def inputOpcoes(msg, opcoes):
             return escolha
         print('\n > Opção Inválida!!! \n')
 
-# Função para inputs especificos de valores numericos (float)
+# Função para entrada de valores numéricos do tipo float
 def inputNum(msg):
     while True:
         try:
@@ -23,7 +23,7 @@ def inputNum(msg):
         except ValueError:
             print('\n > Você deve digitar um valor numérico!!! \n')
 
-# Função para inputs especificos de valores numericos (int)
+# Função para entrada de valores numéricos do tipo inteiro
 def inputInt(msg):
     while True:
         try:
@@ -32,17 +32,17 @@ def inputInt(msg):
         except ValueError:
             print('\n > Você deve digitar um valor inteiro!!! \n')
 
-# Função para inputs especificos de datas
+# Função para entrada de datas no formato 'dd/mm/aaaa'
 def inputData(msg):
     while True:
         try:
             data = input(msg)
-            data = datetime.strptime(data, '%d/%m/%Y')
-            return data.strftime('%d/%m/%Y')
+            data = datetime.strptime(data, '%d/%m/%Y') # Converte a string em objeto datetime
+            return data.strftime('%d/%m/%Y') # Retorna a data formatada
         except ValueError:
             print('\n > Formato de data invalido!!! \n')
 
-# Função para inputs de indices de dicionarios
+# Função que valida se um valor inserido existe em uma lista de chaves do dicionário
 def inputDic(msg, dic, chave):
     while True:
         key = input(msg)
@@ -50,36 +50,51 @@ def inputDic(msg, dic, chave):
             return key
         print('\n > Digite uma opção existente \n')
 
-# Função para mostrar tabela
+# Função de busca binária em uma lista ordenada
+def buscaBinaria(lista, num):
+    ini = 0
+    fim = len(lista) - 1
+    while ini <= fim:
+        i_chute = (ini + fim) // 2
+        chute = lista[i_chute]
+        if chute == num:
+            return i_chute
+        if chute > num:
+            fim = i_chute - 1
+        else:
+            ini = i_chute + 1
+    return -1
+
+# Função que exibe o dicionário em formato de tabela usando o pandas
 def visualizarTabela(dic):
     df = pd.DataFrame(dic)
     print(f'\n{df.to_string(index = False)}\n')
     return
 
-# Função que adiciona um item a um dicionario de listas (ultimo indice)
+# Função que adiciona um novo item ao dicionário
 def dicAdicionar(dic):
-    adicionar_id = max(dic['ID']) + 1
+    adicionar_id = max(dic['ID']) + 1 # Gera novo ID automaticamente
     dic['ID'].append(adicionar_id)
     print('\n > ADICIONAR dados de incêndio a tabela: \n')
-    for key in tipos.keys():
+    for key in tipos.keys(): # Pede os dados conforme os tipos definidos
         adicionar = tipos[key](f'{key}: ')
         dic[key].append(adicionar)
     return
 
-# Função que consulta os dados de um item de um dicionario, atravez do indice
+# Função que consulta e exibe os dados de um item com base no ID informado
 def dicConsultar(dic, chave):
     consultar = inputDic('Digite o ID do incendio que deseja CONSULTAR: ', dic, chave)
-    indice_consultar = dic['ID'].index(int(consultar))
+    indice_consultar = buscaBinaria(dic[chave], int(consultar))
     print(f'\n > Informações do incendio selecionado: \n')
     for key in dic.keys():
         print(key, end = ': ')
         print(dic[key][indice_consultar])
     return
 
-# Função que atualiza os dados de um item de um dicionario, atravez do indice
+# Função que atualiza os dados de um item com base no ID informado
 def dicAtualizar(dic, chave):
     atualizar = inputDic('Digite o ID do incendio que deseja ATUALIZAR: ', dic, chave)
-    indice_atualizar = dic['ID'].index(int(atualizar))
+    indice_atualizar = buscaBinaria(dic[chave], int(atualizar))
     chaves = list(tipos.keys())
     opcoes_atualizar = list(map(str, range(0, len(chaves) + 1)))
     print('\n > Opcoes de Atualizacoes: \n')
@@ -88,26 +103,27 @@ def dicAtualizar(dic, chave):
         print(f'{i} - {chave_nome}')
     tipo_atualizar = inputOpcoes('Quais dados voce quer ATUALIZAR do incendio selecionado? ', opcoes_atualizar)
     match tipo_atualizar:
-        case '0':
+        case '0':  # Atualiza todos os campos
             for key in tipos.keys():
                 mudanca = tipos[key](f'Atualizar {key}: ')
                 dic[key][indice_atualizar] = mudanca
-        case _:
+        case _: # Atualiza campos individuais
             chave_atualizar = chaves[int(tipo_atualizar) - 1]
             mudanca = tipos[chave_atualizar](f'Atualizar {chave_atualizar}: ')
             dic[chave_atualizar][indice_atualizar] = mudanca
     return
 
-# Função que exclui os dados de um item de um dicionario, atravez do indice
+# Função que exclui os dados de um item com base no ID informado
 def dicExcluir(dic, chave):
     excluir = inputDic('Digite o ID do incendio que deseja EXCLUIR: ', dic, chave)
-    indice_excluir = dic['ID'].index(int(excluir))
+    indice_excluir = buscaBinaria(dic[chave], int(excluir))
     for key in dic.keys():
-        dic[key].pop(indice_excluir)
+        dic[key].pop(indice_excluir) # Remove os dados de todas as colunas para esse índice
     return
 
 ### VARIÁVEIS GLOBAIS ###
 
+# Dicionário principal com os dados dos incêndios
 incendios = {
     'ID' : [],
     'Nome Incêndio' : ['GLO-STICK', 'MARS', 'HUTCHCROFT', 'BENNETTS CORNER FIRE', '826 LEELO COURT'],
@@ -122,8 +138,10 @@ incendios = {
     'Estado' : ['OR', 'OR', 'OR', 'OR', 'OR']
 }
 
+# Preenche o campo ID com valores sequenciais
 incendios['ID'] = [i for i, _ in enumerate(incendios['Nome Incêndio'])]
 
+# Dicionário que define qual função de entrada será usada para cada campo
 tipos = {
     'Nome Incêndio' : input,
     'Data Incêndio' : inputData,
@@ -137,11 +155,12 @@ tipos = {
     'Estado' : input
 }
 
+# Opções disponíveis no menu principal
 opcoes_menu = ['0', '1', '2', '3', '4']
 
 ### CODIGO ###
 
-while True:
+while True: # Laço principal do sistema com menu de navegação
     print('\n----- CodeGreen -----\n\n'
         '1 - ADICIONAR dados de incêndio \n'
         '2 - CONSULTAR dados de incêndio \n'
@@ -149,24 +168,25 @@ while True:
         '4 - EXCLUIR dados de incêndio \n'
         '0 - SAIR do sistema')
 
+    # Escolha da opção do menu
     opcao = inputOpcoes('Digite a opção desejada: ', opcoes_menu)
 
     match opcao:
-        case '1':
+        case '1': # Execução da função adicionar
             dicAdicionar(incendios)
             input('\nDados ADICIONADOS!!!\nPressione qualquer tecla para voltar... ')
-        case '2':
+        case '2': # Execução da função consultar
             visualizarTabela(incendios)
             dicConsultar(incendios, 'ID')
             input('\nDados CONSULTADOS!!!\nPressione qualquer tecla para voltar... ')
-        case '3':
+        case '3': # Execução da função atualizar
             visualizarTabela(incendios)
             dicAtualizar(incendios, 'ID')
             input('\nDados ATUALIZADOS!!!\nPressione qualquer tecla para voltar... ')
-        case '4':
+        case '4': # Execução da função excluir
             visualizarTabela(incendios)
             dicExcluir(incendios, 'ID')
             input('\nDados EXCLUIDOS!!!\nPressione qualquer tecla para voltar... ')
-        case '0':
+        case '0': # Saida do sistema
             print('\n > SISTEMA FECHADO... \n')
             break
