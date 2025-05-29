@@ -103,6 +103,8 @@ Essas funções manipulam os dados principais do sistema:
 
 ``` dicExcluir(): ``` Remove todos os dados de um incêndio selecionado.
 
+``` dicFiltros(): ``` Exibe os dados de um incêndio selecionado por um filtro.
+
 ## 📅 Estrutura dos Dados
 
 Os dados dos incêndios são armazenados no dicionário ``` incendios ```, onde cada chave representa um campo (coluna), e os valores são listas (linhas de dados).
