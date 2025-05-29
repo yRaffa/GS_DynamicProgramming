@@ -45,7 +45,7 @@ Pode-se atualizar todos os campos ou apenas um campo específico.
 
 Remove completamente um registro selecionado pelo ID.
 
-**🔸 Buscar dados de incêndio utilizando Filtros**
+**🔸 Buscar dados de Incêndio Utilizando Filtros**
 
 Mostra as informações detalhadas de um incêndio selecionado por filtros, como:
 
