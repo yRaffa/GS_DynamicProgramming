@@ -2,12 +2,12 @@
 
 # 🐍 Dynamic Programing (2ESA)
 
-# 👥 Integrantes
+## 👥 Integrantes
 - RM: 556197 // Caio Felipe de Lima Bezerra
 - RM: 554736 // Rafael Federici de Oliveira
 - RM: 554873 // Sofia Fernandes
 
-# 📕 Sobre o Projeto
+## 📕 Sobre o Projeto
 
 🍃 CodeGreen - Sistema de Gerenciamento de Incêndios Florestais
 
