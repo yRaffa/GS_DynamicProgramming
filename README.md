@@ -153,11 +153,8 @@ Essa estrutura facilita a reutilização de funções específicas de input ao a
 ## ▶️ Como Usar
 
 - Execute o código em um terminal Python.
-
 - Um menu será exibido com as opções principais.
-
 - Digite o número da operação desejada.
-
 - Siga as instruções no terminal para preencher ou visualizar os dados.
 
 ## ⚠️ Observação
