@@ -51,6 +51,7 @@ def inputDic(msg, dic, chave):
         print('\n > Digite uma opção existente \n')
 
 # Função de busca binária em uma lista ordenada
+# Em comparação ao uso de .index(), que faz uma busca linear O(n), a buscaBinaria() tem uma melhor eficiência O(log n).
 def buscaBinaria(lista, num):
     ini = 0
     fim = len(lista) - 1
@@ -84,7 +85,8 @@ def dicAdicionar(dic):
 # Função que consulta e exibe os dados de um item com base no ID informado
 def dicConsultar(dic, chave):
     consultar = inputDic('Digite o ID do incendio que deseja CONSULTAR: ', dic, chave)
-    indice_consultar = buscaBinaria(dic[chave], int(consultar))
+    # indice_consultar = dic[chave].index(int(consultar)) # Notação O Grande: O(n) (menos eficiente)
+    indice_consultar = buscaBinaria(dic[chave], int(consultar)) # Notação O Grande: O(log n) (mais eficiente)
     print(f'\n > Informações do incendio selecionado: \n')
     for key in dic.keys():
         print(key, end = ': ')
@@ -94,7 +96,8 @@ def dicConsultar(dic, chave):
 # Função que atualiza os dados de um item com base no ID informado
 def dicAtualizar(dic, chave):
     atualizar = inputDic('Digite o ID do incendio que deseja ATUALIZAR: ', dic, chave)
-    indice_atualizar = buscaBinaria(dic[chave], int(atualizar))
+    # indice_atualizar = dic[chave].index(int(atualizar)) # Notação O Grande: O(n) (menos eficiente)
+    indice_atualizar = buscaBinaria(dic[chave], int(atualizar)) # Notação O Grande: O(log n) (mais eficiente)
     chaves = list(tipos.keys())
     opcoes_atualizar = list(map(str, range(0, len(chaves) + 1)))
     print('\n > Opcoes de Atualizacoes: \n')
@@ -116,7 +119,8 @@ def dicAtualizar(dic, chave):
 # Função que exclui os dados de um item com base no ID informado
 def dicExcluir(dic, chave):
     excluir = inputDic('Digite o ID do incendio que deseja EXCLUIR: ', dic, chave)
-    indice_excluir = buscaBinaria(dic[chave], int(excluir))
+    # indice_excluir = dic[chave].index(int(excluir)) # Notação O Grande: O(n) (menos eficiente)
+    indice_excluir = buscaBinaria(dic[chave], int(excluir)) # Notação O Grande: O(log n) (mais eficiente)
     for key in dic.keys():
         dic[key].pop(indice_excluir) # Remove os dados de todas as colunas para esse índice
     return
@@ -127,9 +131,9 @@ def dicExcluir(dic, chave):
 incendios = {
     'ID' : [],
     'Nome Incêndio' : ['GLO-STICK', 'MARS', 'HUTCHCROFT', 'BENNETTS CORNER FIRE', '826 LEELO COURT'],
-    'Data Incêndio' : ['28/08/2003', '28/08/2003', '30/08/2003', '01/09/2003', '26/08/2003'],
-    'Data Descoberta' : ['28/08/2003', '28/08/2003', '30/08/2003', '01/09/2003', '26/08/2003'],
-    'Data Contenção' : ['28/08/2003', '28/08/2003', '30/08/2003', '01/09/2003', '26/08/2003'],
+    'Data Incêndio' : ['28/08/2002', '01/09/2003', '10/10/2003', '19/02/2004', '26/06/2005'],
+    'Data Descoberta' : ['28/08/2002', '02/09/2003', '10/10/2003', '20/02/2004', '26/06/2005'],
+    'Data Contenção' : ['29/08/2002', '03/09/2003', '12/10/2003', '20/02/2004', '26/06/2005'],
     'Causa' : ['Natural', 'Natural', 'Humana', 'Humana', 'Humana'],
     'Classificação' : ['A', 'A', 'B', 'A', 'A'],
     'Tamanho (km²)' : [0.1, 0.01, 0.75, 0.01, 0.01],

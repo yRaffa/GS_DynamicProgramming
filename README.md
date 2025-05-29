@@ -15,7 +15,7 @@ Este sistema foi desenvolvido em [Python](https://www.python.org/doc/) com o obj
 
 ### 🧩 Funcionalidades Principais
 
-**1. Adicionar Dados de Incêndio**
+**🔸 Adicionar Dados de Incêndio**
 
 Permite o cadastro dos dados de um incêndio.
 
@@ -35,29 +35,29 @@ Solicita os seguintes dados:
 
 - Estado
 
-**2. Consultar Dados de Incêndio**
+**🔸 Consultar Dados de Incêndio**
 
 Mostra todos os dados em formato de tabela.
 
 Permite ao usuário selecionar um incêndio pelo seu ID e visualizar suas informações detalhadas.
 
-**3. Atualizar Dados de Incêndio**
+**🔸 Atualizar Dados de Incêndio**
 
 Permite alterar os dados de um incêndio já registrado.
 
 Pode-se atualizar todos os campos ou apenas um campo específico.
 
-**4. Excluir Dados de Incêndio**
+**🔸 Excluir Dados de Incêndio**
 
 Remove completamente um registro selecionado pelo ID.
 
-**5. Sair do Sistema**
+**🔸 Sair do Sistema**
 
 Encerra o programa de maneira segura.
 
 ### 🧠 Estrutura do Código
 
-**1. Funções de Input Personalizado**
+**🔹 Funções de Input Personalizado**
 
 Estas funções ajudam a garantir que os dados inseridos estejam no formato correto:
 
@@ -71,17 +71,17 @@ Estas funções ajudam a garantir que os dados inseridos estejam no formato corr
 
 ``` inputDic(): ``` Valida se a chave (ex: ID) existe no dicionário.
 
-**2. Busca Binária**
+**🔹 Busca Binária**
 
 ``` buscaBinaria(): ``` Localiza rapidamente o índice de um ID na lista. A lista deve estar ordenada, como é o caso da lista de IDs.
 
 Em comparação ao uso de ``` .index() ```, que faz uma busca linear **O(n)**, a ``` buscaBinaria() ``` tem uma melhor eficiência **O(log n)**.
 
-**3. Visualização com Pandas**
+**🔹 Visualização com Pandas**
 
 ``` visualizarTabela(): ``` Converte o dicionário em um DataFrame do pandas e imprime de forma tabular.
 
-**4. Operações com o Dicionário**
+**🔹 Operações com o Dicionário**
 
 Essas funções manipulam os dados principais do sistema:
 
