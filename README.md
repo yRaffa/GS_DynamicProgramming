@@ -1,4 +1,4 @@
-# **🍃 FIAP GS 2025 PROTECH THE FUTURE 🌐**
+# **🌐 FIAP GS 2025 PROTECH THE FUTURE**
 
 # 🐍 Dynamic Programing (2ESA)
 
