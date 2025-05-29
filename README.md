@@ -1,19 +1,19 @@
 # **🍃 GS 2025 PROTECH THE FUTURE 🌐**
 
-## 🐍 Dynamic Programing (2ESA)
+# 🐍 Dynamic Programing (2ESA)
 
-## 👥 Integrantes
+# 👥 Integrantes
 - RM: 556197 // Caio Felipe de Lima Bezerra
 - RM: 554736 // Rafael Federici de Oliveira
 - RM: 554873 // Sofia Fernandes
 
-## 📕 Sobre o Projeto
+# 📕 Sobre o Projeto
 
 🍃 CodeGreen - Sistema de Gerenciamento de Incêndios Florestais
 
 Este sistema foi desenvolvido em [Python](https://www.python.org/doc/) com o objetivo de gerenciar (registrar, visualizar, consultar, atualizar e excluir) informações sobre incêndios florestais. Ele funciona inteiramente via terminal (linha de comando) e utiliza estruturas de dados simples (dicionários com listas), além da biblioteca pandas para exibição organizada dos dados em formato de tabela.
 
-### 🧩 Funcionalidades Principais
+## 🧩 Funcionalidades Principais
 
 **🔸 Adicionar Dados de Incêndio**
 
@@ -55,7 +55,7 @@ Remove completamente um registro selecionado pelo ID.
 
 Encerra o programa de maneira segura.
 
-### 🧠 Estrutura do Código
+## 🧠 Estrutura do Código
 
 **🔹 Funções de Input Personalizado**
 
@@ -93,7 +93,7 @@ Essas funções manipulam os dados principais do sistema:
 
 ``` dicExcluir(): ``` Remove todos os dados de um incêndio selecionado.
 
-### 📅 Estrutura dos Dados
+## 📅 Estrutura dos Dados
 
 Os dados dos incêndios são armazenados no dicionário ``` incendios ```, onde cada chave representa um campo (coluna), e os valores são listas (linhas de dados).
 
@@ -117,7 +117,7 @@ incendios = {
 
 O campo ``` 'ID' ``` é usado como chave primária para buscas e operações de identificação dos incêndios.
 
-### 📌 Tabela de Tipos
+## 📌 Tabela de Tipos
 
 O dicionário ``` tipos ``` define o tipo de input esperado para cada campo:
 
@@ -138,7 +138,7 @@ tipos = {
 
 Essa estrutura facilita a reutilização de funções específicas de input ao adicionar ou atualizar dados.
 
-### ▶️ Como Usar
+## ▶️ Como Usar
 
 - Execute o código em um terminal Python.
 
@@ -148,6 +148,6 @@ Essa estrutura facilita a reutilização de funções específicas de input ao a
 
 - Siga as instruções no terminal para preencher ou visualizar os dados.
 
-### ⚠️ Observação
+## ⚠️ Observação
 
 O código utiliza validação básica de entrada, mas não possui persistência de dados. Ao encerrar o programa, os dados são perdidos.
