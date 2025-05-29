@@ -1,4 +1,4 @@
-# **🍃 GS 2025 PROTECH THE FUTURE 🌐**
+# **🍃 FIAP GS 2025 PROTECH THE FUTURE 🌐**
 
 # 🐍 Dynamic Programing (2ESA)
 
@@ -105,7 +105,7 @@ Essas funções manipulam os dados principais do sistema:
 
 ``` dicFiltros(): ``` Exibe os dados de um incêndio selecionado por um filtro.
 
-## 📅 Estrutura dos Dados
+## 🎲 Estrutura dos Dados
 
 Os dados dos incêndios são armazenados no dicionário ``` incendios ```, onde cada chave representa um campo (coluna), e os valores são listas (linhas de dados).
 
