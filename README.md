@@ -11,7 +11,7 @@
 
 🍃 CodeGreen - Sistema de Gerenciamento de Incêndios Florestais
 
-Este sistema foi desenvolvido em [Python](https://www.python.org/doc/) com o objetivo de gerenciar (registrar, visualizar, consultar, atualizar e excluir) informações sobre incêndios florestais. Ele funciona inteiramente via terminal (linha de comando) e utiliza estruturas de dados simples (dicionários com listas), além da biblioteca pandas para exibição organizada dos dados em formato de tabela.
+Este sistema foi desenvolvido em [Python](https://www.python.org/doc/) com o objetivo de gerenciar (registrar, visualizar, consultar, atualizar e excluir) informações sobre incêndios florestais. Ele funciona inteiramente via terminal e utiliza estruturas de dados simples (dicionários com listas), além da biblioteca [Pandas](https://pandas.pydata.org/) para exibição organizada dos dados em formato de tabela.
 
 ## 🧩 Funcionalidades Principais
 
@@ -22,17 +22,11 @@ Permite o cadastro dos dados de um incêndio.
 Solicita os seguintes dados:
 
 - Nome do Incêndio
-
 - Datas (Incêndio, Descoberta, Contenção)
-
 - Causa
-
 - Classificação
-
 - Tamanho (km²)
-
 - Localização (Latitude, Longitude)
-
 - Estado
 
 **🔸 Consultar Dados de Incêndio**
@@ -50,6 +44,16 @@ Pode-se atualizar todos os campos ou apenas um campo específico.
 **🔸 Excluir Dados de Incêndio**
 
 Remove completamente um registro selecionado pelo ID.
+
+**🔸 Buscar dados de incêndio utilizando Filtros**
+
+Mostra as informações detalhadas de um incêndio selecionado por filtros, como:
+
+- Incêndio Mais Novo
+- Incêndio Mais Antigo
+- Maior Incêndio (km²)
+- Menor Incêndio (km²)
+- Último Item Adicionado
 
 **🔸 Sair do Sistema**
 
@@ -77,9 +81,15 @@ Estas funções ajudam a garantir que os dados inseridos estejam no formato corr
 
 Em comparação ao uso de ``` .index() ```, que faz uma busca linear **O(n)**, a ``` buscaBinaria() ``` tem uma melhor eficiência **O(log n)**.
 
+**🔹 Busca por Maior e Menor Elemento**
+
+``` maiorElementoLista(): ``` Localiza rapidamente o índice do maior elemento de uma lista.
+
+``` menorElementoLista(): ``` Localiza rapidamente o índice do menor elemento de uma lista.
+
 **🔹 Visualização com Pandas**
 
-``` visualizarTabela(): ``` Converte o dicionário em um DataFrame do pandas e imprime de forma tabular.
+``` visualizarTabela(): ``` Converte o dicionário em um DataFrame do [Pandas](https://pandas.pydata.org/) e imprime de forma tabular.
 
 **🔹 Operações com o Dicionário**
 

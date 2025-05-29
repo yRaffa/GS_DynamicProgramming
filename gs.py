@@ -50,6 +50,26 @@ def inputDic(msg, dic, chave):
             return key
         print('\n > Digite uma opção existente \n')
 
+# Função que procura e retorna o indice do maior elemento de uma lista
+def maiorElementoLista(lista):
+    maior = 0
+    maior_elemento = lista[maior]
+    for i in range(len(lista)):
+        if lista[i] > maior_elemento:
+            maior_elemento = lista[i]
+            maior = i
+    return maior
+
+# Função que procura e retorna o indice do menor elemento de uma lista
+def menorElementoLista(lista):
+    indice_menor = 0
+    menor_elemento = lista[indice_menor]
+    for i in range(len(lista)):
+        if lista[i] < menor_elemento:
+            menor_elemento = lista[i]
+            indice_menor = i
+    return indice_menor
+
 # Função de busca binária em uma lista ordenada
 # Em comparação ao uso de .index(), que faz uma busca linear O(n), a buscaBinaria() tem uma melhor eficiência O(log n).
 def buscaBinaria(lista, num):
@@ -82,20 +102,20 @@ def dicAdicionar(dic):
         dic[key].append(adicionar)
     return
 
-# Função que consulta e exibe os dados de um item com base no ID informado
+# Função que consulta e exibe os dados de um item do dicionário com base no ID informado
 def dicConsultar(dic, chave):
-    consultar = inputDic('Digite o ID do incendio que deseja CONSULTAR: ', dic, chave)
+    consultar = inputDic('Digite o ID do incêndio que deseja CONSULTAR: ', dic, chave)
     # indice_consultar = dic[chave].index(int(consultar)) # Notação O Grande: O(n) (menos eficiente)
     indice_consultar = buscaBinaria(dic[chave], int(consultar)) # Notação O Grande: O(log n) (mais eficiente)
-    print(f'\n > Informações do incendio selecionado: \n')
+    print(f'\n > Informações do incêndio selecionado: \n')
     for key in dic.keys():
         print(key, end = ': ')
         print(dic[key][indice_consultar])
     return
 
-# Função que atualiza os dados de um item com base no ID informado
+# Função que atualiza os dados de um item do dicionário com base no ID informado
 def dicAtualizar(dic, chave):
-    atualizar = inputDic('Digite o ID do incendio que deseja ATUALIZAR: ', dic, chave)
+    atualizar = inputDic('Digite o ID do incêndio que deseja ATUALIZAR: ', dic, chave)
     # indice_atualizar = dic[chave].index(int(atualizar)) # Notação O Grande: O(n) (menos eficiente)
     indice_atualizar = buscaBinaria(dic[chave], int(atualizar)) # Notação O Grande: O(log n) (mais eficiente)
     chaves = list(tipos.keys())
@@ -104,7 +124,7 @@ def dicAtualizar(dic, chave):
     print('0 - Todos os Dados')
     for i, chave_nome in enumerate(chaves, start = 1):
         print(f'{i} - {chave_nome}')
-    tipo_atualizar = inputOpcoes('Quais dados voce quer ATUALIZAR do incendio selecionado? ', opcoes_atualizar)
+    tipo_atualizar = inputOpcoes('Quais dados voce quer ATUALIZAR do incêndio selecionado? ', opcoes_atualizar)
     match tipo_atualizar:
         case '0':  # Atualiza todos os campos
             for key in tipos.keys():
@@ -116,13 +136,47 @@ def dicAtualizar(dic, chave):
             dic[chave_atualizar][indice_atualizar] = mudanca
     return
 
-# Função que exclui os dados de um item com base no ID informado
+# Função que exclui os dados de um item do dicionário com base no ID informado
 def dicExcluir(dic, chave):
-    excluir = inputDic('Digite o ID do incendio que deseja EXCLUIR: ', dic, chave)
+    excluir = inputDic('Digite o ID do incêndio que deseja EXCLUIR: ', dic, chave)
     # indice_excluir = dic[chave].index(int(excluir)) # Notação O Grande: O(n) (menos eficiente)
     indice_excluir = buscaBinaria(dic[chave], int(excluir)) # Notação O Grande: O(log n) (mais eficiente)
     for key in dic.keys():
         dic[key].pop(indice_excluir) # Remove os dados de todas as colunas para esse índice
+    return
+
+# Função que busca dados de um item do dicionário com base em filtros
+def dicFiltros(dic):
+    print('\n > Filtros de Busca: \n\n'
+        '1 - Incêndio mais novo \n'
+        '2 - Incêndio mais antigo \n'
+        '3 - Maior incêndio (km²) \n'
+        '4 - Menor incêndio (km²) \n'
+        '5 - Último item adicionado')
+    opcoes_filtros = ['1', '2', '3', '4', '5']
+    filtro = inputOpcoes('Escolha um filtro para busca: ', opcoes_filtros)
+    match filtro:
+        case '1': # Incêndio mais novo
+            datas = [datetime.strptime(data, '%d/%m/%Y') for data in dic['Data Incêndio']]
+            indice_filtro = maiorElementoLista(datas)
+            nome_filtro = 'Incêndio mais novo'
+        case '2':  # Incêndio mais antigo
+            datas = [datetime.strptime(data, '%d/%m/%Y') for data in dic['Data Incêndio']]
+            indice_filtro = menorElementoLista(datas)
+            nome_filtro = 'Incêndio mais antigo'
+        case '3': # Maior incêndio
+            indice_filtro = maiorElementoLista(dic['Tamanho (km²)'][:])
+            nome_filtro = 'Maior incêndio (km²)'
+        case '4': # Menor incêndio
+            indice_filtro = menorElementoLista(dic['Tamanho (km²)'][:])
+            nome_filtro = 'Menor incêndio (km²)'
+        case '5': # Último item adicionado
+            indice_filtro = maiorElementoLista(dic['ID'][:])
+            nome_filtro = 'Último item adicionado'
+    print(f'\n > {nome_filtro}: \n')
+    for key in dic.keys():
+        print(key, end = ': ')
+        print(dic[key][indice_filtro])
     return
 
 ### VARIÁVEIS GLOBAIS ###
@@ -131,12 +185,12 @@ def dicExcluir(dic, chave):
 incendios = {
     'ID' : [],
     'Nome Incêndio' : ['GLO-STICK', 'MARS', 'HUTCHCROFT', 'BENNETTS CORNER FIRE', '826 LEELO COURT'],
-    'Data Incêndio' : ['28/08/2002', '01/09/2003', '10/10/2003', '19/02/2004', '26/06/2005'],
-    'Data Descoberta' : ['28/08/2002', '02/09/2003', '10/10/2003', '20/02/2004', '26/06/2005'],
-    'Data Contenção' : ['29/08/2002', '03/09/2003', '12/10/2003', '20/02/2004', '26/06/2005'],
+    'Data Incêndio' : ['01/09/2003', '28/08/2002', '26/06/2005', '10/10/2003', '19/02/2004'],
+    'Data Descoberta' : ['02/09/2003', '28/08/2002', '26/06/2005', '10/10/2003', '20/02/2004'],
+    'Data Contenção' : ['03/09/2003', '29/08/2002', '26/06/2005', '12/10/2003', '20/02/2004'],
     'Causa' : ['Natural', 'Natural', 'Humana', 'Humana', 'Humana'],
     'Classificação' : ['A', 'A', 'B', 'A', 'A'],
-    'Tamanho (km²)' : [0.1, 0.01, 0.75, 0.01, 0.01],
+    'Tamanho (km²)' : [0.15, 0.1, 0.75, 0.01, 0.05],
     'Latitude' : [4237911, 4206309, 4465717, 4440448, 4399677],
     'Longitude' : [-12198978, -1221124, -12374707, -12256454, -1241208],
     'Estado' : ['OR', 'OR', 'OR', 'OR', 'OR']
@@ -160,7 +214,7 @@ tipos = {
 }
 
 # Opções disponíveis no menu principal
-opcoes_menu = ['0', '1', '2', '3', '4']
+opcoes_menu = ['0', '1', '2', '3', '4', '5']
 
 ### CODIGO ###
 
@@ -170,10 +224,11 @@ while True: # Laço principal do sistema com menu de navegação
         '2 - CONSULTAR dados de incêndio \n'
         '3 - ATUALIZAR dados de incêndio \n'
         '4 - EXCLUIR dados de incêndio \n'
+        '5 - BUSCAR dados de incêndio via FILTROS \n'
         '0 - SAIR do sistema')
 
     # Escolha da opção do menu
-    opcao = inputOpcoes('Digite a opção desejada: ', opcoes_menu)
+    opcao = inputOpcoes('Escolha uma opção: ', opcoes_menu)
 
     match opcao:
         case '1': # Execução da função adicionar
@@ -191,6 +246,9 @@ while True: # Laço principal do sistema com menu de navegação
             visualizarTabela(incendios)
             dicExcluir(incendios, 'ID')
             input('\nDados EXCLUIDOS!!!\nPressione qualquer tecla para voltar... ')
+        case '5': # Execução da função buscar via filtros
+            dicFiltros(incendios)
+            input('\nBUSCA realizada!!!\nPressione qualquer tecla para voltar... ')
         case '0': # Saida do sistema
             print('\n > SISTEMA FECHADO... \n')
             break
