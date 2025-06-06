@@ -1,3 +1,9 @@
+### INTEGRANTES ###
+
+# RM: 556197 - Caio Felipe de Lima Bezerra
+# RM: 554736 - Rafael Federici de Oliveira
+# RM: 554873 - Sofia Fernandes
+
 ### BIBLIOTECAS ###
 
 import pandas as pd # Biblioteca usada para criar e exibir tabelas
