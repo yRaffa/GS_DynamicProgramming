@@ -1,4 +1,4 @@
-# **🍃 GS 2025 PROTECH THE FUTURE 🌐**
+# **🌐 FIAP GS 2025 PROTECH THE FUTURE**
 
 # 🐍 Dynamic Programing (2ESA)
 
@@ -9,13 +9,13 @@
 
 ## 📕 Sobre o Projeto
 
-🍃 CodeGreen - Sistema de Gerenciamento de Incêndios Florestais
+### 🍃 CodeGreen - Sistema de Gerenciamento de Incêndios Florestais
 
 Este sistema foi desenvolvido em [Python](https://www.python.org/doc/) com o objetivo de gerenciar (registrar, visualizar, consultar, atualizar e excluir) informações sobre incêndios florestais. Ele funciona inteiramente via terminal e utiliza estruturas de dados simples (dicionários com listas), além da biblioteca [Pandas](https://pandas.pydata.org/) para exibição organizada dos dados em formato de tabela.
 
 ## 🧩 Funcionalidades Principais
 
-**🔸 Adicionar Dados de Incêndio**
+### 🔸 Adicionar Dados de Incêndio
 
 Permite o cadastro dos dados de um incêndio.
 
@@ -29,23 +29,23 @@ Solicita os seguintes dados:
 - Localização (Latitude, Longitude)
 - Estado
 
-**🔸 Consultar Dados de Incêndio**
+### 🔸 Consultar Dados de Incêndio
 
 Mostra todos os dados em formato de tabela.
 
 Permite ao usuário selecionar um incêndio pelo seu ID e visualizar suas informações detalhadas.
 
-**🔸 Atualizar Dados de Incêndio**
+### 🔸 Atualizar Dados de Incêndio
 
 Permite alterar os dados de um incêndio já registrado.
 
 Pode-se atualizar todos os campos ou apenas um campo específico.
 
-**🔸 Excluir Dados de Incêndio**
+### 🔸 Excluir Dados de Incêndio
 
 Remove completamente um registro selecionado pelo ID.
 
-**🔸 Buscar dados de Incêndio Utilizando Filtros**
+### 🔸 Buscar dados de Incêndio Utilizando Filtros
 
 Mostra as informações detalhadas de um incêndio selecionado por filtros, como:
 
@@ -55,13 +55,13 @@ Mostra as informações detalhadas de um incêndio selecionado por filtros, como
 - Menor Incêndio (km²)
 - Último Item Adicionado
 
-**🔸 Sair do Sistema**
+### 🔸 Sair do Sistema
 
 Encerra o programa de maneira segura.
 
 ## 🧠 Estrutura do Código
 
-**🔹 Funções de Input Personalizado**
+### 🔹 Funções de Input Personalizado
 
 Estas funções ajudam a garantir que os dados inseridos estejam no formato correto:
 
@@ -75,23 +75,23 @@ Estas funções ajudam a garantir que os dados inseridos estejam no formato corr
 
 ``` inputDic(): ``` Valida se a chave (ex: ID) existe no dicionário.
 
-**🔹 Busca Binária**
+### 🔹 Busca Binária
 
 ``` buscaBinaria(): ``` Localiza rapidamente o índice de um ID na lista. A lista deve estar ordenada, como é o caso da lista de IDs.
 
 Em comparação ao uso de ``` .index() ```, que faz uma busca linear **O(n)**, a ``` buscaBinaria() ``` tem uma melhor eficiência **O(log n)**.
 
-**🔹 Busca por Maior e Menor Elemento**
+### 🔹 Busca por Maior e Menor Elemento
 
 ``` maiorElementoLista(): ``` Localiza rapidamente o índice do maior elemento de uma lista.
 
 ``` menorElementoLista(): ``` Localiza rapidamente o índice do menor elemento de uma lista.
 
-**🔹 Visualização com Pandas**
+### 🔹 Visualização com Pandas
 
 ``` visualizarTabela(): ``` Converte o dicionário em um DataFrame do [Pandas](https://pandas.pydata.org/) e imprime de forma tabular.
 
-**🔹 Operações com o Dicionário**
+### 🔹 Operações com o Dicionário
 
 Essas funções manipulam os dados principais do sistema:
 
@@ -105,7 +105,7 @@ Essas funções manipulam os dados principais do sistema:
 
 ``` dicFiltros(): ``` Exibe os dados de um incêndio selecionado por um filtro.
 
-## 📅 Estrutura dos Dados
+## 🎲 Estrutura dos Dados
 
 Os dados dos incêndios são armazenados no dicionário ``` incendios ```, onde cada chave representa um campo (coluna), e os valores são listas (linhas de dados).
 
